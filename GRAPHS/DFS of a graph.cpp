@@ -1,10 +1,10 @@
 #include<iostream>
-#include<list>
+#include<vector>
 using namespace std;
 class Graph
 {
   int v;
-  list<int> *adj;
+  vector<int> *adj;
   void dfsUtil(int v,bool visited[]);
   public:
     Graph(int v);
@@ -14,7 +14,7 @@ class Graph
 Graph::Graph(int v)
 {
   this->v = v;
-  adj = new list<int>[v];
+  adj = new vector<int>[v];
 }
 void Graph::addEdge(int v,int w)
 {
@@ -24,11 +24,10 @@ void Graph::dfsUtil(int v,bool visited[])
 {
   visited[v] = true;
   cout<<v<<" ";
-  list<int>::iterator i;
-  for(i=adj[v].begin();i!=adj[v].end();i++)
+  for(auto x:adj[v])
   {
-    if(!visited[*i])
-      dfsUtil(*i,visited);
+    if(!visited[x])
+      dfsUtil(x,visited);
   }
 }
 void Graph::dfs(int v)
@@ -51,6 +50,6 @@ int main()
   g.addEdge(3, 3);
   cout << "Following is Depth First Traversal"
             " (starting from vertex 2) \n";
-  g.dfs(0);
+  g.dfs(2);
   return 0;
 }
