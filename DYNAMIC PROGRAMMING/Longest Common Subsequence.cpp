@@ -27,7 +27,7 @@ int lcs(int m,int n)
       lc+=x[i-1];
       i--;j--;
     }
-    if(arr[i-1][j]>arr[i][j-1])
+    else if(arr[i-1][j]>arr[i][j-1])
       i--;
     else
       j--;
